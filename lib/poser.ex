@@ -1,0 +1,2 @@
+defmodule Poser do
+end
