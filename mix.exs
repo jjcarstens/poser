@@ -16,6 +16,7 @@ defmodule Poser.MixProject do
   def application do
     [
       extra_applications: [:logger, :runtime_tools],
+      included_applications: [:distillery],
       mod: {Poser.Application, []}
     ]
   end
