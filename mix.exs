@@ -24,6 +24,7 @@ defmodule Poser.MixProject do
   defp deps do
     [
       {:nerves_hub_device, path: "../nerves_hub_device"},
+      {:ring_logger, "~> 0.6"},
       {:shoehorn, "~> 0.5"},
       {:toolshed, "~> 0.2"}
     ]
