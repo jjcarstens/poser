@@ -15,4 +15,4 @@ config :nerves_hub_user_api,
 config :nerves_hub_link,
   device_api_host: "0.0.0.0",
   device_api_port: 4001,
-  server_name_indication: 'api.nerves-hub.org'
+  server_name_indication: 'device.nerves-hub.org'
