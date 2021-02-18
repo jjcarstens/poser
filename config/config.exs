@@ -1,25 +1,13 @@
 import Config
 
-# Mock NervesRuntime
-config :nerves_runtime, :kernel, autoload_modules: false
-config :nerves_runtime, target: "host"
+# Enable the Nerves integration with Mix
+Application.start(:nerves_bootstrap)
 
-config :nerves_runtime, Nerves.Runtime.KV.Mock, %{
-  "nerves_fw_active" => "a",
-  "a.nerves_fw_uuid" => "8a8b902c-d1a9-58aa-6111-04ab57c2f2a8",
-  "a.nerves_fw_product" => "poser",
-  "a.nerves_fw_architecture" => "x86_64",
-  "a.nerves_fw_version" => "0.1.0",
-  "a.nerves_fw_platform" => "x86_84",
-  "a.nerves_fw_misc" => "extra comments",
-  "a.nerves_fw_description" => "test firmware",
-  "nerves_fw_devpath" => "/tmp/fwup_bogus_path",
-  "nerves_serial_number" => "poser"
-}
+config :poser, target: Mix.target()
 
-config :nerves_runtime, :modules, [
-  {Nerves.Runtime.KV, Nerves.Runtime.KV.Mock}
-]
+config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
+
+config :nerves, source_date_epoch: "1613680624"
 
 # use Environment var env instead of Mix.env
 env =
@@ -36,9 +24,18 @@ env =
 
 import_config "#{env}.exs"
 
+if Mix.target() == :host or Mix.target() == :"" do
+  import_config "host.exs"
+else
+  import_config "target.exs"
+end
+
 config :nerves_hub_cli,
   home_dir: Path.expand("../nerves-hub/#{env}", __DIR__)
 
 config :nerves_hub_link,
-  configurator: Poser.Configurator,
-  remote_iex: true
+  remote_iex: true,
+  fwup_public_keys: [
+    # local devkey
+    "ypN6eUscEjCqo4Nvm8KkABywcPzuaOReKfZqn57zYIQ="
+  ]

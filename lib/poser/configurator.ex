@@ -9,7 +9,9 @@ defmodule Poser.Configurator do
   configuration settings.
 
   For Poser, this just helps changing context of Dev, Staging, and Prod with an
-  environment variable without requiring recompilation
+  environment variable without requiring recompilation.
+
+  This is only used on host and ignored on device in firmware
   """
   @behaviour NervesHubLink.Configurator
 
@@ -17,8 +19,8 @@ defmodule Poser.Configurator do
 
   @impl true
   def build(config) do
-    certfile = Path.join("nerves-hub", "poser-cert.pem")
-    keyfile = Path.join("nerves-hub", "poser-key.pem")
+    certfile = Path.join("nerves-hub", "poser-x86_64-cert.pem")
+    keyfile = Path.join("nerves-hub", "poser-x86_64-key.pem")
 
     signer =
       Path.join("nerves-hub", "poser-signer.cert")

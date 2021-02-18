@@ -15,3 +15,9 @@ config :nerves_hub_link,
   device_api_host: "0.0.0.0",
   device_api_port: 4001,
   ssl: [server_name_indication: 'device.nerves-hub.org']
+
+config :nerves_hub_link_http,
+  ca_certs: ca_certs,
+  device_api_host: "0.0.0.0",
+  device_api_port: 4001,
+  device_api_sni: 'device.nerves-hub.org'
