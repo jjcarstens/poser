@@ -29,11 +29,10 @@ defmodule Poser.MixProject do
   defp deps do
     [
       {:nerves, "~> 1.7.0", runtime: false},
-      {:shoehorn, "~> 0.7.0"},
+      {:shoehorn, "~> 0.8"},
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
-      {:nerves_hub_link_http, "~> 0.8"},
-      {:nerves_hub_link, "~> 0.9"},
+      {:nerves_hub_link, "~> 1.0"},
       # {:nerves_hub_link, path: "../nerves_hub_link"},
       {:nerves_runtime, "~> 0.11.3", override: true},
 

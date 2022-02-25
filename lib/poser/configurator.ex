@@ -30,9 +30,10 @@ defmodule Poser.Configurator do
   end
 
   defp build_cacerts(signer) do
+    # If you need to adjust CACerts, change it here
     signer_der = Certificate.pem_to_der(signer)
 
-    [signer_der | cacerts()]
+    [signer_der | Certificate.ca_certs()]
   end
 
   defp update_config(config, certfile, keyfile, signer) do
@@ -45,17 +46,5 @@ defmodule Poser.Configurator do
     socket = Keyword.put(config.socket, :reconnect_interval, 15000)
 
     %{config | socket: socket, ssl: ssl}
-  end
-
-  defp cacerts() do
-    Application.get_env(:nerves_hub_link, :ca_certs)
-    |> Path.join("*")
-    |> Path.wildcard()
-    |> Enum.map(&to_der/1)
-  end
-
-  defp to_der(file) do
-    File.read!(file)
-    |> Certificate.pem_to_der()
   end
 end

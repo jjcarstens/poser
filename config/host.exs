@@ -14,9 +14,7 @@ config :nerves_runtime, Nerves.Runtime.KV.Mock, %{
   "a.nerves_fw_misc" => "extra comments",
   "a.nerves_fw_description" => "test firmware",
   "nerves_fw_devpath" => "/tmp/fwup_bogus_path",
-  "nerves_serial_number" => "poser",
-  "nerves_hub_cert" => File.read!("nerves-hub/poser-x86_64-cert.pem"),
-  "nerves_hub_key" => File.read!("nerves-hub/poser-x86_64-key.pem")
+  "nerves_serial_number" => "poser"
 }
 
 config :nerves_runtime, :modules, [
