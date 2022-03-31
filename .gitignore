@@ -24,3 +24,4 @@ poser-*.tar
 
 /tmp/
 config/local.exs
+/nerves-hub

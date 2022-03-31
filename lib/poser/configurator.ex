@@ -29,8 +29,15 @@ defmodule Poser.Configurator do
     update_config(config, certfile, keyfile, signer)
   end
 
-  defp build_cacerts(signer) do
+  def ca_certs() do
     # If you need to adjust CACerts, change it here
+    Path.wildcard(Application.get_env(:poser, :ca_certs), "*")
+    |> Path.wildcard()
+    |> Enum.flat_map(&X509.from_pem(File.read!(&1)))
+    |> Enum.map(&X509.Certificate.to_der/1)
+  end
+
+  defp build_cacerts(signer) do
     signer_der = Certificate.pem_to_der(signer)
 
     [signer_der | Certificate.ca_certs()]

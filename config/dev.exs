@@ -1,7 +1,5 @@
 import Config
 
-ca_certs = Path.expand("../ssl/dev", __DIR__)
-
 # API HTTP connection.
 config :nerves_hub_user_api,
   host: "0.0.0.0",
