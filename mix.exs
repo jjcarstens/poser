@@ -28,17 +28,18 @@ defmodule Poser.MixProject do
 
   defp deps do
     [
-      {:nerves, "~> 1.7.0", runtime: false},
+      {:nerves, "~> 1.7.16 or ~> 1.8.0", runtime: false},
       {:shoehorn, "~> 0.8"},
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
-      {:nerves_hub_link, "~> 1.0"},
-      {:nerves_key, "~> 1.0", only: :dev, runtime: false},
+      {:nerves_hub_link, "~> 1.3.0"},
+      {:nerves_time, "~> 0.4"},
+      {:nerves_key, "~> 1.1", only: :dev, runtime: false},
       # {:nerves_hub_link, path: "../nerves_hub_link"},
       {:nerves_runtime, "~> 0.11.3", override: true},
 
       # Dependencies for all targets except :host
-      {:nerves_pack, "~> 0.4", targets: @all_targets}
+      {:nerves_pack, "~> 0.7.0", targets: @all_targets}
     ]
   end
 
