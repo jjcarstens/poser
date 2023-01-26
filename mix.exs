@@ -33,7 +33,6 @@ defmodule Poser.MixProject do
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
       {:nerves_hub_link, "~> 1.3.0"},
-      {:nerves_time, "~> 0.4"},
       {:nerves_key, "~> 1.1", only: :dev, runtime: false},
       # {:nerves_hub_link, path: "../nerves_hub_link"},
       {:nerves_runtime, "~> 0.11.3", override: true},
