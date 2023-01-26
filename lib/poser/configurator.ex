@@ -19,8 +19,10 @@ defmodule Poser.Configurator do
 
   @impl true
   def build(config) do
-    certfile = Path.join("nerves-hub", "poser-cert.pem")
-    keyfile = Path.join("nerves-hub", "poser-key.pem")
+    cert_config = Application.get_env(:poser, __MODULE__)
+
+    certfile = Path.join("nerves-hub", config(cert_config[:certfile]))
+    keyfile = Path.join("nerves-hub", config(cert_config[:keyfile]))
 
     signer =
       Path.join("nerves-hub", "poser-signer.cert")
@@ -54,4 +56,8 @@ defmodule Poser.Configurator do
 
     %{config | socket: socket, ssl: ssl}
   end
+
+  defp config({:system, env, default}), do: System.get_env(env, default)
+
+  defp config(value), do: value
 end

@@ -7,6 +7,10 @@ config :poser,
   ca_certs: Path.expand("../ssl/#{Mix.env()}", __DIR__),
   target: Mix.target()
 
+config :poser, Poser.Configurator,
+  certfile: "poser-cert.pem",
+  keyfile: "poser-key.pem"
+
 config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 
 config :nerves, source_date_epoch: "1613680624"

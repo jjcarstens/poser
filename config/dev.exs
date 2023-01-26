@@ -1,5 +1,9 @@
 import Config
 
+config :poser, Poser.Configurator,
+  certfile: {:system, "POSER_CERT", "poser-cert.pem"},
+  keyfile: {:system, "POSER_KEY", "poser-key.pem"}
+
 # API HTTP connection.
 config :nerves_hub_user_api,
   host: "0.0.0.0",
